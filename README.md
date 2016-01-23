@@ -24,7 +24,7 @@ Strings are not base10. They are pretty much `base255`. So, what we would need i
 
 	$ php -r "echo base_convert('96rher',36,255);"
 
-The standard PHP library does not implement this functionality. In fact, it would be quite possible to implement it based on existing functions, but the problem is that the standard algorithm needs support for arbitrary precision numbers (bigint) in order to do that. Therefore, it would require installing the bcmath or gmp php extensions. 
+The standard PHP library does not implement this functionality. In fact, it would be quite possible to implement it based on existing functions, but the problem is that the standard algorithm needs support for arbitrary precision numbers (bigint) in order to do that. Therefore, it would require installing the `bcmath` or `gmp` php extensions. 
 
 ## Why use base36?
 
