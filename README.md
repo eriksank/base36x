@@ -28,7 +28,9 @@ The standard PHP library does not implement this functionality. In fact, it woul
 
 ## Why use base36?
 
-For pretty much the same reasons as base64. For example, email systematically uses base64 to embed images and other binary data inside messages. Encoding the data in base64 avoids the problem that the data contains control charactes that will disturb the email protocol. The problem is that base64 distinguishes between lower -and upper case letters. There are numerous situations in which the protocol is case insensitive, for example in the case of urls. So, base36 is suitable for where you would use base64 but where you do not want to distinguish between lower -and uppercase characters.
+For pretty much the same reasons as base64. For example, email systematically uses base64 to embed images and other binary data inside messages. Encoding the data in base64 avoids the problem that the data contains control charactes that will disturb the email protocol.
+
+The problem with base64 is that it distinguishes between lower -and upper case letters. There are numerous situations in which the outer protocol is case insensitive, for example in the case of urls. In that case, base36 will be more suitable. You can use it when you would use base64 but where you do not want to distinguish between lower -and uppercase characters.
 
 By the way, another encoding, `base58`, does basically the same as base64 without using character couples that are considered ambiguous: For example, there are many fonts in which O (letter o) versus 0 (digit zero) are considered ambiguous. It is easy to confuse them by looking at them. So, base58 removes those letters from the encoding base.
 
