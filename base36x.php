@@ -89,7 +89,9 @@ function base36x_decode($string) {
 			return false; //sequence invalid
 		}
 		$result.=$transl;
-		if($string[$i]=='9') $i++; //lookahead consumed
+		if($string[$i]=='9') {
+			$i++; //lookahead consumed
+		}
 	}
 	return base64_decode($result);
 }
