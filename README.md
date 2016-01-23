@@ -38,7 +38,7 @@ By the way, another encoding, `base58`, does basically the same as base64 withou
 
 In fact, as the suggestion in the forum said, we can repurpose the base64 encoding/decoding functions to produce base36 output. Now, the result is not a real base36 encoding, because not all combinations of valid base36 characters result in a valid base36 string. From there, the name `base36x` instead of base36.
 
-Note: But then again, this should not be an issue, because strings (base255) are usually not subjected to arithmetic operations such adding, substracting, multiyplying or dividing. The domain of strings and its operations are not expected to be a valid algebraic structure. Therefore, it does not particularly matter that the encoding domain is not entirely convex.
+Note: But then again, this should not be an issue, because strings (base255) are usually not subjected to arithmetic operations such adding, substracting, multiyplying or dividing. The domain of strings and its operations are not expected to be a valid algebraic structure. Therefore, it does not particularly matter in practical terms that the encoding domain is not entirely convex.
 
 You can use the encoding/decoding functions as following:
 
