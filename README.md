@@ -46,5 +46,9 @@ You can use the encoding/decoding functions as following:
 
 	$base255=base36x_decode($base36x);
 
+	text: id=99&title=hello world
+	base36x: a9w9q909o9tkmd9gl0b9g9u90a9g9vsb9g8gd290yb9g9q91
+	decoded: id=99&title=hello world
+
 This solution does not require installing bcmath or gmp. Enjoy!
 
