@@ -79,10 +79,10 @@ function base36x_decode($string) {
 	$size=strlen($string);
 	$result='';
 	for($i=0;$i<$size;$i++) {
-		if($i<$size-1) {
-			$lookahead=$string[$i+1];
-		} else {
+		if($i==$size-1) {
 			$lookahead='';
+		} else {
+			$lookahead=$string[$i+1];
 		}
 		$transl=base36x_decode_char($string[$i],$lookahead);
 		if($transl===false) {
