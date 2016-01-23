@@ -9,6 +9,8 @@
 
 	http://forums.phpfreaks.com/topic/218241-php-base36-encodingdecoding-for-textdata/
 
+	License LGPL
+
 	==================================================================
 */
 
