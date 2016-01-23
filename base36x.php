@@ -78,8 +78,13 @@ function base36x_decode($string) {
 	}
 	$size=strlen($string);
 	$result='';
-	for($i=0;$i<$size-1;$i++) {
-		$transl=base36x_decode_char($string[$i],$string[$i+1]);
+	for($i=0;$i<$size;$i++) {
+		if($i<$size-1) {
+			$lookahead=$string[$i+1];
+		} else {
+			$lookahead='';
+		}
+		$transl=base36x_decode_char($string[$i],$lookahead);
 		if($transl===false) {
 			return false; //sequence invalid
 		}
