@@ -1,6 +1,6 @@
 # base36x
 
-Implements a suggestion for `base36` based on `base64` encoding. You can find the suggestion for these functions [here](http://forums.phpfreaks.com/topic/218241-php-base36-encodingdecoding-for-textdata/).
+Implements `base36` by reusing the `base64` encoding functions. You can find the original suggestion for this solution strategy [in this forum post](http://forums.phpfreaks.com/topic/218241-php-base36-encodingdecoding-for-textdata/).
 
 ## Base36
 
