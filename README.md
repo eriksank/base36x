@@ -1,16 +1,16 @@
 # base36x
 
-Implements a suggestion for base36 based on base64 encoding. You can find the suggestion for these functions [here](http://forums.phpfreaks.com/topic/218241-php-base36-encodingdecoding-for-textdata/).
+Implements a suggestion for `base36` based on `base64` encoding. You can find the suggestion for these functions [here](http://forums.phpfreaks.com/topic/218241-php-base36-encodingdecoding-for-textdata/).
 
 ## Base36
 
-Base 36 is an encoding in which we only use letters (a to z) and digits (0 to 9) to represent data.
+Base36 is an encoding in which we only use letters `a to z` and digits `0 to 9` to represent data.
 
-It is quite similar to base 64, where we use lowercase letters (a to z), uppercase (A to Z) and digits (0 to 9) to represent the first 62 values, + and / to represent the two last values and = to correct the final translation block.
+It is quite similar to base64, where we use lowercase letters `a to z`, uppercase `A to Z` and digits `0 to 9` to represent the first 62 values, `+` and `/` to represent the two last values and `=` to correct the final translation block.
 
 ## What is the problem?
 
-In fact, PHP supports converting to and from base36. However, only from base 10:
+In fact, PHP supports converting to and from base36. However, only from base10:
 
 	php -r "echo base_convert('555555555',10,36);"
 	96rher
@@ -18,17 +18,23 @@ In fact, PHP supports converting to and from base36. However, only from base 10:
 	php -r "echo base_convert('96rher',36,10);"
 	555555555
 
-Strings are not base 10. They are pretty much base 255. So, what we would need is:
+Strings are not base10. They are pretty much `base255`. So, what we would need is:
 
 	php -r "echo base_convert('555555555',255,36);"
 
 	php -r "echo base_convert('96rher',36,255);"
 
-The standard PHP library does not implement this functionality. In fact, it would be quite possible to implement it based on existing functions, but the problem is that the standard algorithm needs support for large numbers in order to do that. Therefore, it would require installing the bcmath or gmp php extensions.
+The standard PHP library does not implement this functionality. In fact, it would be quite possible to implement it based on existing functions, but the problem is that the standard algorithm needs support for arbitrary precision numbers (bigint) in order to do that. Therefore, it would require installing the bcmath or gmp php extensions. 
+
+## Why use base36?
+
+For pretty much the same reasons as base64. For example, email systematically uses base64 to embed images and other binary data inside messages. Encoding the data in base64 avoids the problem that the data contains control charactes that will disturb the email protocol. The problem is that base64 distinguishes between lower -and upper case letters. There are numerous situations in which the protocol is case insensitive, for example in the case of urls. So, base36 is suitable for where you would use base64 but where you do not want to distinguish between lower -and uppercase characters.
+
+By the way, another encoding, `base58`, does basically the same as base64 without using character couples that are considered ambiguous: For example, there are many fonts in which O (letter o) versus 0 (digit zero) are considered ambiguous. It is easy to confuse them by looking at them. So, base58 removes those letters from the encoding base.
 
 ## The workaround
 
-In fact, as the suggestion in the forum said, we can also repurpose the base64 encoding/decoding functions to produce base36 output. Now, the result is not a real base36 encoding, because not all combinations of valid base36 characters result in a valid base36 string. From there, the name `base36x` instead of `base36`.
+In fact, as the suggestion in the forum said, we can also repurpose the base64 encoding/decoding functions to produce base36 output. Now, the result is not a real base36 encoding, because not all combinations of valid base36 characters result in a valid base36 string. From there, the name `base36x` instead of base36.
 
 Note: But then again, this should not be an issue, because strings (base255) are usually not subjected to arithmetic operations such adding, substracting, multiyplying or dividing. The domain of strings and its operations are not expected to be a valid algebraic structure. Therefore, it does not particularly matter that the encoding domain is not entirely convex.
 
