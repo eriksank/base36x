@@ -12,17 +12,17 @@ It is quite similar to base64, where we use lowercase letters `a to z`, uppercas
 
 In fact, PHP supports converting to and from base36. However, only from base10:
 
-	php -r "echo base_convert('555555555',10,36);"
+	$ php -r "echo base_convert('555555555',10,36);"
 	96rher
 
-	php -r "echo base_convert('96rher',36,10);"
+	$ php -r "echo base_convert('96rher',36,10);"
 	555555555
 
 Strings are not base10. They are pretty much `base255`. So, what we would need is:
 
-	php -r "echo base_convert('555555555',255,36);"
+	$ php -r "echo base_convert('555555555',255,36);"
 
-	php -r "echo base_convert('96rher',36,255);"
+	$ php -r "echo base_convert('96rher',36,255);"
 
 The standard PHP library does not implement this functionality. In fact, it would be quite possible to implement it based on existing functions, but the problem is that the standard algorithm needs support for arbitrary precision numbers (bigint) in order to do that. Therefore, it would require installing the bcmath or gmp php extensions. 
 
